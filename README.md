@@ -12,10 +12,10 @@ Eraser is a secure file erasure. Open Source Java project under Apache License v
 
  - Type or erasure: ```eraser.type```
    - Types: Z=Zeros (0x00), O=Ones (0xFF), R=Random
-   - Example: -Deraser.type=OR (2 Overwrite Rounds: Ones and Random)
+   - Example: ```-Deraser.type=OR``` (2 Overwrite Rounds: Ones and Random)
    - Default value: OZR (3 Overwrite Rounds: Ones, Zeros and Random)
  - Block size: ```eraser.blocksize```
-   - Example: -Deraser.blocksize=65536
+   - Example: ```-Deraser.blocksize=65536```
    - Default value: 4096
 
 ---
