@@ -214,17 +214,21 @@ public class Eraser {
 
 	public static void main(final String[] args) throws Throwable {
 		if (args.length < 1) {
-			System.err.println("java " + Eraser.class.getName() + " <file>");
+			System.err.println("java " + Eraser.class.getName() + " <file> [<file> [...]]");
 			return;
 		}
-		final File f = new File(args[0]);
-		if (!f.exists()) {
-			System.err.println("ERROR: File not found: " + f);
-			return;
-		}
-		final Eraser e = new Eraser(Integer.getInteger(PROP_BLOCK_SIZE, DEFAULT_BLOCK_SIZE));
-		for (final char eraseType : System.getProperty(PROP_ERASE_TYPE, "OZR").toUpperCase().toCharArray()) {
-			e.erase(f, eraseType, true);
+		final int blockSize = Integer.getInteger(PROP_BLOCK_SIZE, DEFAULT_BLOCK_SIZE).intValue();
+		final char[] eraseTypes = System.getProperty(PROP_ERASE_TYPE, "OZR").toUpperCase().toCharArray();
+		for (final String a : args) {
+			final File f = new File(a);
+			if (!f.exists()) {
+				System.err.println("ERROR: File not found: " + f);
+				continue;
+			}
+			final Eraser e = new Eraser(blockSize);
+			for (final char eraseType : eraseTypes) {
+				e.erase(f, eraseType, true);
+			}
 		}
 	}
 }
