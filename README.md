@@ -6,9 +6,23 @@ Eraser is a secure file erasure. Open Source Java project under Apache License v
 
 ---
 
+## DOC
+
+#### Configuration: System Properties
+
+ - Type or erasure: ```eraser.type```
+   - Types: Zero (Z), One (O), Random (R)
+   - Example: -Deraser.type=OR
+   - Default value: OZR
+ - Block size: ```eraser.blocksize```
+   - Example: -Deraser.blocksize=65536
+   - Default value: 4096
+
+---
+
 ## Running
 
-    java -jar eraser-x.y.z.jar <file>
+    java -Deraser.type=R -jar eraser-x.y.z.jar <file>
 
 ---
 Inspired in [DBAN](http://www.dban.org/), this code is Java-minimalistic version.
