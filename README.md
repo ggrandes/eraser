@@ -11,7 +11,7 @@ Eraser is a secure file erasure. Open Source Java project under Apache License v
 #### Configuration: System Properties
 
  - Type or erasure: ```eraser.type```
-   - Types: Zero (Z), One (O), Random (R)
+   - Types: Zeros (Z), Ones (O), Random (R)
    - Example: -Deraser.type=OR
    - Default value: OZR
  - Block size: ```eraser.blocksize```
