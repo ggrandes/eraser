@@ -1,0 +1,96 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.javastack</groupId>
+	<artifactId>eraser</artifactId>
+	<version>1.0.0</version>
+
+	<dependencies>
+	</dependencies>
+
+	<build>
+		<extensions>
+			<extension>
+				<groupId>org.springframework.build</groupId>
+				<artifactId>aws-maven</artifactId>
+				<version>4.4.0.RELEASE</version>
+			</extension>
+		</extensions>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<!-- Package -->
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.3.1</version>
+				<configuration>
+					<excludes>
+						<exclude>**/log4j.properties</exclude>
+						<exclude>**/sandbox/*</exclude>
+					</excludes>
+					<archive>
+						<addMavenDescriptor>false</addMavenDescriptor>
+						<manifest>
+							<addDefaultImplementationEntries>false</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>false</addDefaultSpecificationEntries>
+						</manifest>
+						<manifestEntries>
+							<Main-Class>org.javastack.eraser.Eraser</Main-Class>
+							<Built-By>Maven</Built-By>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+			<!-- Package source in a JAR -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.0.4</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- Generate JavaDocs -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.3</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- Deployment -->
+	<distributionManagement>
+		<repository>
+			<id>maven-s3-release-repo</id>
+			<name>S3 Release Repository</name>
+			<url>s3://maven-release/release</url>
+		</repository>
+		<snapshotRepository>
+			<id>maven-s3-snapshot-repo</id>
+			<name>S3 Snapshot Repository</name>
+			<url>s3://maven-snapshot/snapshot</url>
+		</snapshotRepository>
+	</distributionManagement>
+</project>
