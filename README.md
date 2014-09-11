@@ -2,7 +2,7 @@
 
 Eraser is a secure file [erasure](http://en.wikipedia.org/wiki/Data_erasure). Open Source Java project under Apache License v2.0
 
-### Current Stable Version is [1.0.0](https://maven-release.s3.amazonaws.com/release/org/javastack/eraser/1.0.0/eraser-1.0.0.jar)
+### Current Stable Version is [1.0.1](https://maven-release.s3.amazonaws.com/release/org/javastack/eraser/1.0.1/eraser-1.0.1.jar)
 
 ---
 

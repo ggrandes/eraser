@@ -55,7 +55,8 @@ public class Eraser {
 						dataWrite = 0;
 						if (++cntOutput >= 64) { // 64 cols
 							if (showProgress) {
-								System.out.println();
+								final long left = (remain * 100 / size);
+								System.out.println(" (" + left + "% left)");
 							}
 							cntOutput = 0;
 						}
